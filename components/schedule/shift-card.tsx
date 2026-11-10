@@ -8,7 +8,7 @@ import {
 } from '@/lib/schedule'
 import { toDateFieldValue, toTimeFieldValue } from '@/lib/schedule-time'
 import ShiftFormModal from './shift-form-modal'
-import { deleteShift, updateShift } from '@/app/schedule/actions'
+import { deleteShift, updateShift } from '@/app/(internal)/schedule/actions'
 import DeleteShiftButton from './delete-shift-button'
 
 type Employee = {

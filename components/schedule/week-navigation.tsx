@@ -3,8 +3,8 @@
 import Link from 'next/link'
 import { formatWeekRange, toDateInputValue } from '@/lib/schedule'
 import ShiftFormModal from './shift-form-modal'
-import { createShift } from '@/app/schedule/actions'
-import { copyPreviousWeek } from '@/app/schedule/actions'
+import { createShift } from '@/app/(internal)/schedule/actions'
+import { copyPreviousWeek } from '@/app/(internal)/schedule/actions'
 
 type Employee = {
   id: string

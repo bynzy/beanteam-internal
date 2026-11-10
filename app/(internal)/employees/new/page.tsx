@@ -1,4 +1,4 @@
-import { addEmployee } from '@/app/employees/actions'
+import { addEmployee } from '@/app/(internal)/employees/actions'
 
 export default function NewEmployeePage() {
   return (

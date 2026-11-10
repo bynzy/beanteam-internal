@@ -10,7 +10,7 @@ import {
 } from '@/lib/schedule'
 import ShiftCard from './shift-card'
 import ShiftFormModal from './shift-form-modal'
-import { createShift } from '@/app/schedule/actions'
+import { createShift } from '@/app/(internal)/schedule/actions'
 
 type Employee = {
   id: string

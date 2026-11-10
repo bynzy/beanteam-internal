@@ -5,7 +5,7 @@ import {
   saveCompliance,
   uploadEmployeeDocument,
   deleteEmployeeDocument,
-} from '@/app/employees/actions'
+} from '@/app/(internal)/employees/actions'
 
 function formatDate(dateString: string | null) {
   if (!dateString) return '—'
