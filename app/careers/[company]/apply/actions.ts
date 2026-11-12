@@ -1,10 +1,44 @@
 
 'use server'
 
+
+import { headers } from 'next/headers'
+import { applicationRateLimit } from '@/lib/rate-limit'
 import { createClient } from '@/lib/supabase/server'
 import { createAdminClient } from '@/lib/supabase/admin'
 
 export async function submitJobApplication(formData: FormData) {
+
+  const requestHeaders = await headers()
+  
+  const clientIp = requestHeaders.get('x-real-ip')
+
+  if (!clientIp) {
+    return {
+      success: false,
+      message: 'Unable to verify the request. Please try again later.',
+    }
+  }
+
+
+  
+  let allowed = false
+
+  try {
+    const result = await applicationRateLimit.limit(`ip:${clientIp}`)
+    allowed = result.success
+  } catch (error) {
+    console.error('Application rate limiter unavailable:', error)
+  }
+
+
+  if (!allowed) {
+    return {
+      success: false,
+      error: 'Too many applications. Please try again later.',
+    }
+  }
+
 
 const MAX_FORM_SIZE = 20_000
 
