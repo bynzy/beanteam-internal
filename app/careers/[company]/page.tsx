@@ -1,4 +1,4 @@
-
+import Link from 'next/link'
 import { createClient } from '@/lib/supabase/server'
 
 type CareersPageProps = {
@@ -106,6 +106,14 @@ export default async function CareersPage({
                     {job.description}
                   </p>
                 )}
+
+<Link
+  href={`/careers/${encodeURIComponent(company)}/apply?job=${encodeURIComponent(job.id)}`}
+  className="mt-5 inline-block rounded-lg bg-amber-600 px-6 py-3 font-semibold text-white hover:bg-amber-700"
+>
+  Apply Now
+</Link>
+
               </article>
             ))}
           </div>
