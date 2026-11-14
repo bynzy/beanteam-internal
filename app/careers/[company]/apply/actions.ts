@@ -5,7 +5,7 @@
 import { headers } from 'next/headers'
 import { ipAddress } from '@vercel/functions'
 import { applicationRateLimit } from '@/lib/rate-limit'
-import { createClient } from '@/lib/supabase/server'
+import { createPublicClient } from '@/lib/supabase/public'
 import { createAdminClient } from '@/lib/supabase/admin'
 
 export async function submitJobApplication(formData: FormData) {
@@ -13,18 +13,13 @@ export async function submitJobApplication(formData: FormData) {
 
   const requestHeaders = await headers()
 
-  const clientIp = ipAddress({
-    headers: requestHeaders,
-  })
+  const clientIp =
+  ipAddress({ headers: requestHeaders }) ??
+  (process.env.NODE_ENV === 'development'
+    ? 'local-development'
+    : undefined)
 
-
-
-
-
-
-
-
-
+  
   if (!clientIp) {
     return {
       success: false,
@@ -82,7 +77,7 @@ export async function submitJobApplication(formData: FormData) {
     }
   }
 
-  const supabase = await createClient()
+  const supabase = createPublicClient()
   const companySlug = String(formData.get('company') || '').trim()
 
   if (!companySlug) {
