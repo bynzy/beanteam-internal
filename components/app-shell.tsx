@@ -29,6 +29,9 @@ export default function AppShell({
           <Link href="/schedule" className="hover:underline">
             Schedule
           </Link>
+          <Link href="/recruiting" className="hover:underline">
+            Recruiting
+          </Link>
         </nav>
       </header>
 
