@@ -1,4 +1,3 @@
-
 import Link from 'next/link'
 import type { ReactNode } from 'react'
 
@@ -11,15 +10,18 @@ export default function AppShell({
     <div className="flex min-h-screen flex-col">
       <header className="flex items-center justify-between border-b px-6 py-4">
         <div>
-          <h1 className="text-xl font-bold tracking-tight">
-            Personns
-          </h1>
+          
+<h1 className="text-xl font-bold tracking-tight text-blue-600">
+  Personns
+</h1>
+
           <p className="text-xs text-gray-500">
             Employee management and compliance simplified
           </p>
         </div>
 
-        <nav className="flex gap-6 text-sm">
+          <nav className="flex gap-6 text-sm font-medium text-blue-600">
+
           <Link href="/dashboard" className="hover:underline">
             Dashboard
           </Link>
